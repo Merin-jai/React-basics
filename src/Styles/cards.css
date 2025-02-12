@@ -1,0 +1,53 @@
+.section{
+    padding: 1%;
+}
+.cards
+{
+    background-color: rgb(16, 146, 155);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 25px;
+    /* padding: 1%; */
+    width: 40%;
+    max-width: 20%;
+    box-shadow: 0 2px 5px #ccc;
+    color : white;
+}
+
+  
+  /* .top {
+    border-radius: 25px 25px 0 0;
+    height: 100px;
+    width: 40%;
+    background-color: #00cec9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+  } */
+.top{
+    background-color: #00cec9;
+    border-radius: 25px 25px 0 0;
+}
+   
+  .cards img {
+    margin: 10px 0px 0px 0;
+  }
+  
+  .circle-img {
+    border-radius: 20%;
+    border: 7px solid #fff;
+    width: 120px;
+    height: 120px;
+  }
+  
+  .bottom {
+    margin-top: 120px;
+  }
+  
+  .info {
+    margin: 20px 0;
+    color: #1a7e76;
+  }
+  
