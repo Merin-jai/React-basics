@@ -12,6 +12,31 @@ const Home = () => {
 
     {/* demonstrating the use of props in the components  */}
       {/* <Props name="John" age={30} /> */}
+
+      {
+        contacts.map(function(contact){
+          return (
+            <Cards
+                name = {contact.name}
+                img = {contact.imgURL}
+                phone = {contact.phone}
+                email = {contact.email}
+              />
+          )
+        })
+      }
+      {/* {
+        contacts.map((contact)=>{
+          return (
+            <Cards
+                name = {contact.name}
+                img = {contact.imgURL}
+                phone = {contact.phone}
+                email = {contact.email}
+              />
+          )
+        })
+      } */}
       <Cards 
         name= {contacts[0].name}
         img= {contacts[0].imgURL}
