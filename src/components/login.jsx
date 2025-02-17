@@ -1,7 +1,8 @@
 import React,{ useState } from 'react';
-import navbar from './navbar';
+import Navbar from './navbar';
+import '../Styles/login.css';
 
-const login = () => {
+const Login = () => {
 
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
@@ -14,11 +15,11 @@ const login = () => {
   }
   return (
     <div class="login">
-      
+        <Navbar/>
         <div class="main">
             <h1 onclick="this.innerHTML='Please Log in'">LOGIN</h1>
         </div>
-        <form class="form" onsubmit={handleSubmit}>
+        <form class="form" onSubmit={handleSubmit}>
             <div class="elements">
                 <label>Username*</label>
                 <input 
@@ -44,5 +45,5 @@ const login = () => {
   )
 };
 
-export default login
+export default Login
 

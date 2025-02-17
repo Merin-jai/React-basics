@@ -1,15 +1,16 @@
 import React from 'react';
 import login from './login';
 import Home from '../Home';
+import { useNavigate } from 'react-router-dom';
 
-const navbar = () => {
+const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <nav>
-        <button onclick={login}>Login</button>
-        {/* <button onclick="location.href='todo.html'">To-Do List</button>
-        <button onclick="location.href='weather.html'">Weather App</button> */}
+        <button onClick={()=>navigate('/Login')}>Login</button>
+        <button onClick={()=>navigate('/')}>Cards</button>
     </nav>
   )
 };
 
-export default navbar
+export default Navbar
