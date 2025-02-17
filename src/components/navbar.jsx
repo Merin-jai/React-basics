@@ -9,6 +9,8 @@ const Navbar = () => {
     <nav>
         <button onClick={()=>navigate('/Login')}>Login</button>
         <button onClick={()=>navigate('/')}>Cards</button>
+        <button onClick={()=>navigate('/DragList')}>List</button>
+        <button onClick={()=>navigate('/video')}>Videos</button>
     </nav>
   )
 };

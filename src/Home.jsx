@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import Sample from './components/sample';
 import Props from './components/Props';
 import contacts from './JSON/contacts';
@@ -7,6 +7,9 @@ import Nav from './components/navbar';
 
 const Home = () => {
 
+    const [contact,setContacts] =useState(contacts);
+    const[draggedIndex,setDraggedIndex]= useState(null);
+    
   return (
     <main>
     {/* <Sample /> */}
@@ -28,18 +31,22 @@ const Home = () => {
       } */}
       <Nav/>
       {
-        contacts.map((contact)=>{
+        contacts.map((contact,index)=>{
           return (
+            <div
+            key={contact.name} // Unique key
+            draggable="true">
             <Cards
                 name = {contact.name}
                 img = {contact.imgURL}
                 phone = {contact.phone}
                 email = {contact.email}
               />
+            </div>
           )
         })
       }
-      <Cards 
+      {/* <Cards 
         name= {contacts[0].name}
         img= {contacts[0].imgURL}
         phone={contacts[0].phone}
@@ -56,7 +63,7 @@ const Home = () => {
         img= {contacts[2].imgURL}
         phone={contacts[2].phone}
         email={contacts[2].email}
-      />
+      /> */}
     </main>
   )
 }

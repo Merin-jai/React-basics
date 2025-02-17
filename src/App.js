@@ -7,6 +7,8 @@ import Props from './components/Props';
 import Cards from './components/Cards';
 import Home from './Home';
 import Login from './components/login';
+import DragAndDropList from './components/DragList';
+import VideoStreamingApp from './components/Videos';
 function App() {
   return (
     <div class="App">
@@ -17,6 +19,8 @@ function App() {
         <Route path="/props" element={<Props />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/Login" element={<Login/>}/>
+        <Route path="/DragList" element={<DragAndDropList />} />
+        <Route path="/video" element={<VideoStreamingApp/>}/>
       </Routes>
     </Router>
     </div>
