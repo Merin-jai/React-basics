@@ -9,6 +9,9 @@ import Home from './Home';
 import Login from './components/login';
 import DragAndDropList from './components/DragList';
 import VideoStreamingApp from './components/Videos';
+import YouTubeVideoApp from './components/YoutubeVideo';
+import Chatbot from './components/chatBot';
+import SignUp from './components/SignUp';
 function App() {
   return (
     <div class="App">
@@ -20,7 +23,10 @@ function App() {
         <Route path="/cards" element={<Cards />} />
         <Route path="/Login" element={<Login/>}/>
         <Route path="/DragList" element={<DragAndDropList />} />
+        <Route path="/yvideo" element={<YouTubeVideoApp />} />
         <Route path="/video" element={<VideoStreamingApp/>}/>
+        <Route path="/chatbot" element={<Chatbot/>}/>
+        <Route path="/Signup" element={<SignUp/>}/>
       </Routes>
     </Router>
     </div>
