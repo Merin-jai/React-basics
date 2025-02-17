@@ -1,0 +1,89 @@
+import { useState } from "react";
+
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page refresh
+
+    if (!email || !password) {
+      setError("All fields are required!");
+      setSuccess("");
+      return;
+    }
+
+    // Simple authentication (For demo purposes)
+    if (email === "user@example.com" && password === "password123") {
+      setSuccess("Login Successful! 🎉");
+      setError("");
+    } else {
+      setError("Invalid email or password!");
+      setSuccess("");
+    }
+  };
+
+  return (
+    <div style={styles.container}>
+      <h2>Login</h2>
+      {error && <p style={styles.error}>{error}</p>}
+      {success && <p style={styles.success}>{success}</p>}
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={styles.input}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={styles.input}
+        />
+        <button type="submit" style={styles.button}>Login</button>
+      </form>
+    </div>
+  );
+}
+
+// Inline CSS styles for simplicity
+const styles = {
+  container: {
+    width: "300px",
+    margin: "50px auto",
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    textAlign: "center",
+    backgroundColor: "#f9f9f9"
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px"
+  },
+  input: {
+    padding: "10px",
+    fontSize: "16px",
+    border: "1px solid #ccc",
+    borderRadius: "4px"
+  },
+  button: {
+    padding: "10px",
+    fontSize: "16px",
+    color: "white",
+    backgroundColor: "blue",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer"
+  },
+  error: { color: "red" },
+  success: { color: "green" }
+};
+
+export default Login;

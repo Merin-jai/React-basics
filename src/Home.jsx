@@ -3,6 +3,7 @@ import Sample from './components/sample';
 import Props from './components/Props';
 import contacts from './JSON/contacts';
 import Cards from './components/Cards';
+import navbar from './components/navbar';
 
 const Home = () => {
 
