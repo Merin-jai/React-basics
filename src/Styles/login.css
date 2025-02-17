@@ -57,7 +57,7 @@ nav button:hover {
     font-size:medium;
 }
 span{
-    color: red;
+    color: rgb(255, 0, 0);
     font-style: italic;
     font-size: smaller;
     /* align-self: flex-start; */

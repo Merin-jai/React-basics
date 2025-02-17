@@ -8,9 +8,11 @@ const Navbar = () => {
   return (
     <nav>
         <button onClick={()=>navigate('/Login')}>Login</button>
+        <button onClick={()=>navigate('/Signup')}>Sign Up</button>
         <button onClick={()=>navigate('/')}>Cards</button>
         <button onClick={()=>navigate('/DragList')}>List</button>
         <button onClick={()=>navigate('/video')}>Videos</button>
+        <button onClick={()=>navigate('/chatbot')}>Chat Bot</button>
     </nav>
   )
 };

@@ -1,25 +1,28 @@
 import React,{ useState } from 'react';
 import Navbar from './navbar';
 import '../Styles/login.css';
-import { auth }  from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import {createUserWithEmailAndPassword } from 'firebase/auth';
 
-const Login = () => {
+const SignUp = () => {
 
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     console.log(username,password);
     setError("");
-    signInWithEmailAndPassword(auth,username,password)
+    createUserWithEmailAndPassword(auth,username,password)
       .then((userCredential) => {
-      // Signed in
+      // Signed up
+      const user = userCredential.user;
+      setUser(user);
       console.log(userCredential);
-      setError("LOGGED IN SUCESS");
+      setError("SIGN UP succesfull");
+      alert("Sign Up successful");
       })
       .catch((error) => {
         setError(error.message);
@@ -37,9 +40,9 @@ const Login = () => {
     <div class="login">
         <Navbar/>
         <div class="main">
-            <h1 onclick="this.innerHTML='Please Log in'">LOGIN</h1>
+            <h1 onclick="this.innerHTML='Please Log in'">SIGN UP</h1>
         </div>
-        <form class="form" onSubmit={handleLogin}>
+        <form class="form" onSubmit={handleSignUp}>
             <div class="elements">
                 <label>Username*</label>
                 {error && <span class="passError">{error}</span>}
@@ -59,11 +62,11 @@ const Login = () => {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}/>
             </div>
-            <input type="submit" value="LOGIN"/>
+            <input type="submit" value="SIGN UP"/>
         </form>
     </div>
   )
 };
 
-export default Login
+export default SignUp;
 
