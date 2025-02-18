@@ -19,7 +19,7 @@ const Login = () => {
       .then((userCredential) => {
       // Signed in
       console.log(userCredential);
-      setError("LOGGED IN SUCESS");
+      setError("LOGGED IN SUCCESSFULLY");
       })
       .catch((error) => {
         setError(error.message);

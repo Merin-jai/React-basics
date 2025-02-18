@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./navbar";
 
 const DragAndDropList = () => {
-  const [items, setItems] = useState(["Item 1", "Item 2", "Item 3", "Item 4"]);
+  const [items, setItems] = useState(["React", "Java", "Python", "Cpp"]);
   const [draggedItemIndex, setDraggedItemIndex] = useState(null);
 
   // Handle drag start
@@ -30,7 +30,7 @@ const DragAndDropList = () => {
   };
 
   return (
-    <div>
+    <div style={{display:"flex",flexDirection:"column"}}>
         <Navbar />
         <ul style={styles.list}>
             {items.map((item, index) => (
@@ -53,9 +53,10 @@ const DragAndDropList = () => {
 const styles = {
   list: {
     padding: "10px",
-    background: "#f4f4f4",
+    background: "#333",
     width: "300px",
     borderRadius: "5px",
+    draggable : "true",
   },
   item: {
     padding: "10px",

@@ -15,6 +15,11 @@ const SignUp = () => {
     e.preventDefault();
     console.log(username,password);
     setError("");
+    if(username===""|password==="")
+    {
+      setError("Please fill all the fields");
+      return;
+    }
     createUserWithEmailAndPassword(auth,username,password)
       .then((userCredential) => {
       // Signed up
@@ -56,7 +61,7 @@ const SignUp = () => {
             <span class="userError"></span>
             <div class="elements">
                 <label>Password*</label>
-                <input type="text" 
+                <input type="password" 
                 id="password" 
                 placeholder="Enter password"
                 value={password}

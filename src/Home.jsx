@@ -4,6 +4,7 @@ import Props from './components/Props';
 import contacts from './JSON/contacts';
 import Cards from './components/Cards';
 import Nav from './components/navbar';
+import './Styles/cards.css';
 
 const Home = () => {
 
@@ -11,7 +12,7 @@ const Home = () => {
     const[draggedIndex,setDraggedIndex]= useState(null);
     
   return (
-    <main>
+    <div className='card-main'>
     {/* <Sample /> */}
 
     {/* demonstrating the use of props in the components  */}
@@ -30,22 +31,24 @@ const Home = () => {
         })
       } */}
       <Nav/>
-      {
-        contacts.map((contact,index)=>{
-          return (
-            <div
-            key={contact.name} // Unique key
-            draggable="true">
-            <Cards
-                name = {contact.name}
-                img = {contact.imgURL}
-                phone = {contact.phone}
-                email = {contact.email}
-              />
-            </div>
-          )
-        })
-      }
+      <div className='card-container'>
+        {
+          contacts.map((contact,index)=>{
+            return (
+              <div
+              key={contact.name} // Unique key
+              draggable="true">
+              <Cards
+                  name = {contact.name}
+                  img = {contact.imgURL}
+                  phone = {contact.phone}
+                  email = {contact.email}
+                />
+              </div>
+            )
+          })
+        }
+      </div>
       {/* <Cards 
         name= {contacts[0].name}
         img= {contacts[0].imgURL}
@@ -64,7 +67,7 @@ const Home = () => {
         phone={contacts[2].phone}
         email={contacts[2].email}
       /> */}
-    </main>
+    </div>
   )
 }
 

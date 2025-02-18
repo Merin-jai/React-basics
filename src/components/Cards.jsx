@@ -10,8 +10,10 @@ const Cards = (props) => {
                 <h3>{props.name}</h3>
             </div>
             
-            <p>{props.phone}</p>
-            <p>{props.email}</p>
+            <div className='bottom'>
+              <p>{props.phone}</p>
+              <p>{props.email}</p>
+            </div>
         </div>
     </section>
   )
