@@ -13,6 +13,7 @@ const Navbar = () => {
         <button onClick={()=>navigate('/DragList')}>List</button>
         <button onClick={()=>navigate('/video')}>Videos</button>
         <button onClick={()=>navigate('/chatbot')}>Chat Bot</button>
+        <button onClick={()=>navigate('/counter')}>Counter</button>
     </nav>
   )
 };

@@ -6,6 +6,7 @@ import Header from './components/header';
 import Sample from './components/sample';
 import Props from './components/Props';
 import Cards from './components/Cards';
+import Counter from './components/Counter';
 // import Home from './Home';
 import Login from './components/login';
 import DragAndDropList from './components/DragList';
@@ -13,6 +14,7 @@ import VideoStreamingApp from './components/Videos';
 import YouTubeVideoApp from './components/YoutubeVideo';
 import Chatbot from './components/chatBot';
 import SignUp from './components/SignUp';
+// import CardPage from './components/CardPage'
 const LazyHome = React.lazy(()=>import('./Home'));
 const LazyLogin =React.lazy(()=>import('./components/login'));
 function App() {
@@ -40,6 +42,7 @@ function App() {
         <Route path="/video" element={<VideoStreamingApp/>}/>
         <Route path="/chatbot" element={<Chatbot/>}/>
         <Route path="/Signup" element={<SignUp/>}/>
+        <Route path='/counter' element={<Counter/>}/>
       </Routes>
     </Router>
     </div>
