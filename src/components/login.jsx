@@ -42,7 +42,7 @@ const Login = () => {
         <form class="form" onSubmit={handleLogin}>
             <div class="elements">
                 <label>Username*</label>
-                {error && <span class="passError">{error}</span>}
+                
                 <input 
                   type="email" 
                   id="username" 
@@ -59,6 +59,7 @@ const Login = () => {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}/>
             </div>
+            {error && <span class="passError">{error}</span>}
             <input type="submit" value="LOGIN"/>
         </form>
     </div>

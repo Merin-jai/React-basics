@@ -1,108 +1,78 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Navbar from "./navbar";
+import Navbar from './navbar';
 
-const API_KEY = "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"; // Replace with your OpenAI API Key
+const API_KEY = "AIzaSyAOORVvfx5Qp6QKTbcmgwx1564kWmvjyw8"
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState([]); // Stores chat history
+  const [input, setInput] = useState(""); // User input
   const [loading, setLoading] = useState(false);
 
-  // Function to handle sending messages to OpenAI API
+  // Handle sending messages
   const sendMessage = async () => {
     if (!input.trim()) return; // Prevent empty messages
-
-    const newMessages = [...messages, { sender: "user", text: input }];
-    setMessages(newMessages);
-    setInput("");
     setLoading(true);
+
+    const userMessage = { role: "user", content: input };
+    setMessages([...messages, userMessage]);
 
     try {
       const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
         {
-          model: "gpt-4",
-          messages: newMessages.map((msg) => ({
-            role: msg.sender === "user" ? "user" : "assistant",
-            content: msg.text,
-          })),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${API_KEY}`,
-          },
+          contents: [{ parts: [{ text: input }] }],
         }
       );
 
-      const botResponse = response.data.choices[0].message.content;
-      setMessages([...newMessages, { sender: "bot", text: botResponse }]);
+      const botMessage = { role: "assistant", content: response.data.candidates[0].content.parts[0].text };
+      setMessages([...messages, userMessage, botMessage]);
     } catch (error) {
       console.error("Error fetching response:", error);
     }
 
+    setInput("");
     setLoading(false);
   };
 
   return (
+    <>
+    <Navbar />
     <div style={styles.container}>
-        <Navbar/>
       <h2>AI Chatbot</h2>
       <div style={styles.chatBox}>
         {messages.map((msg, index) => (
-          <div
-            key={index}
-            style={{
-              ...styles.message,
-              alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
-              backgroundColor: msg.sender === "user" ? "#dcf8c6" : "#ececec",
-            }}
-          >
-            {msg.text}
+          <div key={index} style={msg.role === "user" ? styles.userMessage : styles.botMessage}>
+            {msg.content}
           </div>
         ))}
-        {loading && <p>Thinking...</p>}
       </div>
-      <div style={styles.inputContainer}>
+      <div style={styles.inputBox}>
         <input
           type="text"
+          placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message..."
           style={styles.input}
         />
-        <button onClick={sendMessage} style={styles.button} disabled={loading}>
-          Send
+        <button onClick={sendMessage} disabled={loading} style={styles.button}>
+          {loading ? "Thinking..." : "Send"}
         </button>
       </div>
     </div>
+    </>
   );
 };
 
-// Basic Styles
+// Styling
 const styles = {
-  container: { textAlign: "center", padding: "20px" },
-  chatBox: {
-    display: "flex",
-    flexDirection: "column",
-    height: "400px",
-    width: "400px",
-    border: "1px solid #ccc",
-    overflowY: "scroll",
-    padding: "10px",
-    background: "#f9f9f9",
-    borderRadius: "8px",
-  },
-  message: {
-    padding: "10px",
-    margin: "5px",
-    borderRadius: "8px",
-    maxWidth: "75%",
-  },
-  inputContainer: { display: "flex", marginTop: "10px" },
-  input: { flex: 1, padding: "10px", fontSize: "16px" },
-  button: { padding: "10px", marginLeft: "10px", cursor: "pointer" },
+  container: { textAlign: "center", padding: "20px", width: "400px", margin: "auto" },
+  chatBox: { height: "300px", overflowY: "scroll", padding: "10px", border: "1px solid #ddd", borderRadius: "5px", marginBottom: "10px" },
+  userMessage: { textAlign: "right", background: "#e0f7fa", padding: "10px", margin: "5px", borderRadius: "5px" },
+  botMessage: { textAlign: "left", background: "#f1f1f1", padding: "10px", margin: "5px", borderRadius: "5px" },
+  inputBox: { display: "flex", gap: "10px" },
+  input: { flex: 1, padding: "10px", fontSize: "16px", borderRadius: "5px" },
+  button: { padding: "10px", fontSize: "16px", borderRadius: "5px", cursor: "pointer" },
 };
 
 export default Chatbot;

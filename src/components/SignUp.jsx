@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import Navbar from './navbar';
+import { useNavigate } from 'react-router-dom';
 import '../Styles/login.css';
 import { auth } from '../firebase';
 import {createUserWithEmailAndPassword } from 'firebase/auth';
@@ -10,6 +11,7 @@ const SignUp = () => {
   const [password,setPassword]=useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const SignUp = () => {
     setError("");
     if(username===""|password==="")
     {
-      setError("Please fill all the fields");
+      setError("*Please fill all the fields");
       return;
     }
     createUserWithEmailAndPassword(auth,username,password)
@@ -28,6 +30,7 @@ const SignUp = () => {
       console.log(userCredential);
       setError("SIGN UP succesfull");
       alert("Sign Up successful");
+      navigate('/Login');
       })
       .catch((error) => {
         setError(error.message);
@@ -50,7 +53,6 @@ const SignUp = () => {
         <form class="form" onSubmit={handleSignUp}>
             <div class="elements">
                 <label>Username*</label>
-                {error && <span class="passError">{error}</span>}
                 <input 
                   type="email" 
                   id="username" 
@@ -67,6 +69,7 @@ const SignUp = () => {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}/>
             </div>
+            {error && <span class="passError">{error}</span>}
             <input type="submit" value="SIGN UP"/>
         </form>
     </div>

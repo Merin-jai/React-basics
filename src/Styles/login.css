@@ -39,6 +39,8 @@ nav button:hover {
     align-items: center;
     flex-direction: column;
     padding: 2%;
+    /* border-radius: 25px; */
+    /* box-shadow:rgb(180, 197, 197); */
 }
 
 .elements{
@@ -61,6 +63,7 @@ span{
     color: rgb(255, 0, 0);
     font-style: italic;
     font-size: smaller;
+    font-size: small;
     /* align-self: flex-start; */
 }
 
