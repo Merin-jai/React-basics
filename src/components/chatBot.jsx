@@ -66,8 +66,8 @@ const Chatbot = () => {
 
 // Styling
 const styles = {
-  container: { textAlign: "center", padding: "20px", width: "400px", margin: "auto" },
-  chatBox: { height: "300px", overflowY: "scroll", padding: "10px", border: "1px solid #ddd", borderRadius: "5px", marginBottom: "10px" },
+  container: { textAlign: "center", padding: "20px", width: "800px", margin: "auto" },
+  chatBox: { height: "400px", overflowY: "scroll", padding: "10px", border: "1px solid #ddd", borderRadius: "5px", marginBottom: "10px" },
   userMessage: { textAlign: "right", background: "#e0f7fa", padding: "10px", margin: "5px", borderRadius: "5px" },
   botMessage: { textAlign: "left", background: "#f1f1f1", padding: "10px", margin: "5px", borderRadius: "5px" },
   inputBox: { display: "flex", gap: "10px" },

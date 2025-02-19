@@ -15,6 +15,11 @@ const Login = () => {
     e.preventDefault();
     console.log(username,password);
     setError("");
+    if(username===""|password==="")
+      {
+        setError("*Please fill all the fields");
+        return;
+      }
     signInWithEmailAndPassword(auth,username,password)
       .then((userCredential) => {
       // Signed in
