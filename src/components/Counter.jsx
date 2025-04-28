@@ -14,7 +14,7 @@ const Counter = () => {
         <div>Counter</div>
         <div>{count}</div>
         {/* <button onClick={()=>setCount(count+1)}>Increment</button> */}
-        <button onClick={()=>setTrigger(!trigger)}>Trigger</button>
+        <button onClick={()=>setTrigger(!trigger)}>+</button>
     </div>
   )
 }
